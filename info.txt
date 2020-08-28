@@ -1,0 +1,5 @@
+﻿page de telechargement : https://www.anaconda.com/products/individual/get-started
+Conda logiciel permettant de gerer les environnements des differentes logiciels
+
+Lien pour le tutoriel d'Obitools
+https://pythonhosted.org/OBITools/wolves.html

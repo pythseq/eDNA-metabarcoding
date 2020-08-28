@@ -1,0 +1,8 @@
+   33622 wolf_tutorial/db_v05_r117.fasta
+  133512 wolf_tutorial/embl_r117.ndx
+       6 wolf_tutorial/embl_r117.rdx
+   91701 wolf_tutorial/embl_r117.tdx
+  181104 wolf_tutorial/wolf_F.fastq
+  181104 wolf_tutorial/wolf_R.fastq
+       4 wolf_tutorial/wolf_diet_ngsfilter.txt
+  621053 total

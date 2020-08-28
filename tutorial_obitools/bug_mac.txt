@@ -1,0 +1,4 @@
+﻿alt + L : @
+alt + 7 : |
+Attention pb d'affichage des caracteres dans le terminal (visual studio)
+Autre pb : les fichiers crees dans le terminal ne s'affiche pas

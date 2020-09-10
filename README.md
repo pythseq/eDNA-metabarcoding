@@ -1,5 +1,5 @@
 # beginning_obitools
 
-The first step to begin with obitools and Bash
+OBITools are used for analyse DNA metabarcoding
 
 # We need a doc !

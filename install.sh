@@ -6,7 +6,8 @@ conda config --set auto_activate_base false
 conda --help
 
 #creer nouvel environnement obitools
-ENVYAML=/Users/franck/Projects/installation_obitools/installation_obitools/environnements/obitools_env_conda.yaml
+#ENVYAML=/Users/franck/Projects/installation_obitools/installation_obitools/environnements/obitools_env_conda.yaml
+ENVYAML=/home/bmace/Documents/projets/beginning_obitools/environnements/obitools_env_conda.yaml
 conda env create -f $ENVYAML
 ## To activate this environment, use
 #     $ conda activate obitools

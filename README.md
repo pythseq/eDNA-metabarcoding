@@ -30,7 +30,7 @@ Reopen your terminal and write the following line :
 conda config --set auto_activate_base false
 ```
 
-- Create your new environment obitools in your root beginning_obitools in your corresponding path. For example :
+- Create your new environment obitools from your root beginning_obitools in your corresponding path. For example :
 ```
 ENVYAML=/home/bmace/Documents/projets/beginning_obitools/environnements/obitools_env_conda.yaml
 conda env create -f $ENVYAML
@@ -74,7 +74,7 @@ obigrep -p 'mode!="joined"' wolf.fastq > wolf.ali.fastq
 
 ## Step 2 : Demultiplexing
 
-The .txt file permits to assign each sequence to its sample thanks to its tag. Each tag correspond to a reverse or a forward sequence from a sample.
+The .txt file permits to assign each sequence to its sample thanks to its tag. Each tag corresponds to a reverse or a forward sequence from a sample.
 
 For the moment, the sequences in the newest dataset created are still assigned with their tag. 
 You need to remove it, in order to be able to compare the sequences next :
@@ -85,4 +85,5 @@ ngsfilter -t wolf_tutorial/wolf_diet_ngsfilter.txt -u unidentified.fastq wolf.al
 Two files, containing the sequences deprived of their tag, are created. In this example :
 - unidentified.fastq contains the sequences that were not assigned with a correct tag
 - wolf.ali.assigned.fastq contains the sequences that were assigned with a correct tag, in other words, it contains only the barcode sequences
+
 (To be able to find the sample corresponding to each sequence, you can find the tag in the header of the sequence)

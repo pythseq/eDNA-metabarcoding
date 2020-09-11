@@ -6,8 +6,10 @@ OBITools are commands which can be used to analyse eDNA metabarcoding data based
 
 ## Preliminary steps
 
-- First we need to have Anaconda 3 (2020-07) installed
-If not, click on the following link and download it : https://www.anaconda.com/products/individual/get-started
+- First you need to have Anaconda 3 (2020-07) installed
+
+If it's not the case, click on this [link](https://www.anaconda.com/products/individual/get-started) and dowload it.
+
 Use your bash to install it :
 ```
 bash Anaconda3-2020.07-Linux-x86_64.sh
@@ -69,6 +71,7 @@ obigrep -p 'mode!="joined"' wolf.fastq > wolf.ali.fastq
 ## Step 2 : Demultiplexing
 
 The .txt file permits to assign each sequence to their sample thanks to their tag. Each tag correspond to a the reverse or forward sequences from a sample.
+
 For the moment, the sequences in the newest dataset creates are still assigned with their tag. 
 You need to remove it, in order to be able to compare the sequences next :
 ```

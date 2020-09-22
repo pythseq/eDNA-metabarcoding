@@ -32,7 +32,7 @@ conda config --set auto_activate_base false
 
 - Create your new environment obitools from your root beginning_obitools in your corresponding path. For example :
 ```
-ENVYAML=/home/bmace/Documents/projets/beginning_obitools/environnements/obitools_env_conda.yaml
+ENVYAML=./environnements/obitools_env_conda.yaml
 conda env create -f $ENVYAML
 ```
 

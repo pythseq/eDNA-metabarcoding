@@ -1,5 +1,5 @@
 *mdproj
-tutorial_obitools/wolf_tutorial
-tutorial_obitools/*fastq
-tutorial_obitools/*zip
- 
+wolf_tutorial
+*fastq
+*zip
+

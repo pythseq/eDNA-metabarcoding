@@ -1,6 +1,6 @@
 # beginning_obitools
 
-**Franck Pichot, Bastien Macé, 2020**
+**Franck Pichot, Bastien Macé, Agnès Duhamet 2020**
 
 ## Introduction
 

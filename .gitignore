@@ -3,3 +3,4 @@ wolf_tutorial
 *fastq
 *zip
 wolf_tutorial/*.fastq
+wolf_tutorial/*.txt

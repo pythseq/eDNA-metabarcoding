@@ -4,3 +4,4 @@ wolf_tutorial
 *zip
 wolf_tutorial/*.fastq
 wolf_tutorial/*.txt
+wolf.ali.*

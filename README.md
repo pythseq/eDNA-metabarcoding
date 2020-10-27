@@ -4,7 +4,10 @@
 
 ## Introduction
 
-[OBITools](https://git.metabarcoding.org/obitools/obitools/wikis/home) are commands written in python, which can be used to analyse eDNA metabarcoding data based on sequencers using Illumina technology.
+[OBITools](https://git.metabarcoding.org/obitools/obitools/wikis/home) are commands written in python, which can be used to analyse eDNA 
+metabarcoding data based on sequencers using Illumina technology.
+
+Here, we follow the [tutorial of obitools](https://pythonhosted.org/OBITools/wolves.html)
 
 Only those which permit to make a pair-end sequencing and to demultiplex the sequences are presented here, in the aim to use the pipeline dada2 next.
 

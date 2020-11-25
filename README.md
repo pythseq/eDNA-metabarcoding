@@ -90,3 +90,5 @@ Two files, containing the sequences deprived of their tag, are created. In this 
 - wolf.ali.assigned.fastq contains the sequences that were assigned with a correct tag, in other words, it contains only the barcode sequences
 
 (To be able to find the sample corresponding to each sequence, you can find the tag in the header of the sequence)
+
+## Step 3 : 

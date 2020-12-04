@@ -61,23 +61,31 @@ Activate your environment :
 conda activate obitools
 ```
 
-Make a pair-end sequencing. From your forward and reverse fastq files, this command will create a new fastq file, which will contain the pair-end sequences whith their quality scores.
-```
-illuminapairedend --score-min=40 -r wolf_tutorial/wolf_R.fastq wolf_tutorial/wolf_F.fastq > wolf.fastq
-## --score-min doessn't take into account the sequences with a low quality score (below 40 here)
+Make a pair-end sequencing. From your forward and reverse fastq files, this command will create a new fastq file, which will contain the pair-end sequences whith their quality scores. At the end of this step, the forward and the reverse reads of the same fragment of the two fastq files will be assembled. This reconstructed sequence will be the result of an alignment of the two reads.
 ```
 
-To only conserve the pair-end sequences, eliminate the sequences which haven't been aligned :
+illuminapairedend --score-min=40 -r wolf_tutorial/wolf_R.fastq wolf_tutorial/wolf_F.fastq > wolf.fastq
+
+## --score-min doesn't take into account the sequences with a low quality score (below 40 here). 
+
 ```
+
+If the alignment score is below the chosen threshold then the forward and the reverse reads will not be aligned. Here with example, (below 40) the probability of an error is 0,0001. They will be annotaded as "joined" and they will be remove during the second step. Trimming increase the quality and the reliability of the sequences.
+
+```
+
+To only conserve the pair-end sequences we have to eliminate the sequences which haven't been aligned :
+```
+
 obigrep -p 'mode!="joined"' wolf.fastq > wolf.ali.fastq
 ## -p requires a python expression
-## the unaligned sequences are notified with mode="joined" whereas the aligned sequences are notified with mode="aligned"
+## the unaligned sequences are notified in the header sequence with mode="joined" whereas the aligned sequences are notified with mode="aligned" 
 ## python create a new dataset which only contains the sequences notified "aligned"
 ```
 
 ## Step 2 : Demultiplexing
 
-The .txt file permits to assign each sequence to its sample thanks to its tag. Each tag corresponds to a reverse or a forward sequence from a sample.
+After building the amplicon sequence, each of them must be assigned to its initial PCR according to the tag added at one or both extremities of the amplified sequence. Each tag attached directly to the 5'-end of one or both primers must have the same lenght. Sequence demultiplexing detect the amplification primer associated with the tag. After that, the central metabarcode sequence will be extracted and assigned to its corresponding PCR. During this step a file will be generate, in this file each sequence is tagged with the sample name. 
 
 For the moment, the sequences in the newest dataset created are still assigned with their tag. 
 You need to remove it, in order to be able to compare the sequences next :

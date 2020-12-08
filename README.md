@@ -74,11 +74,10 @@ illuminapairedend --score-min=40 -r wolf_tutorial/wolf_R.fastq wolf_tutorial/wol
 
 If the alignment score is below the chosen threshold then the forward and the reverse reads will not be aligned. Here with example, (below 40) the probability of an error is 0,0001. They will be annotaded as "joined" and they will be remove during the second step. Trimming increase the quality and the reliability of the sequences.
 
-```
 
 To only conserve the pair-end sequences we have to eliminate the sequences which haven't been aligned :
-```
 
+```
 obigrep -p 'mode!="joined"' wolf.fastq > wolf.ali.fastq
 ## -p requires a python expression
 ## the unaligned sequences are notified in the header sequence with mode="joined" whereas the aligned sequences are notified with mode="aligned" 

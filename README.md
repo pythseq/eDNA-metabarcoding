@@ -121,5 +121,5 @@ All the sequences without biological interest need to be removed. That could be 
 obistat -c count wolf.ali.assigned.uniq.fasta |  \
   sort -nk1 | head -20
 ```
-
+![Alt text](img/chimera.png)
 

@@ -9,7 +9,6 @@ metabarcoding data based on sequencers using Illumina technology.
 
 Here, we follow the [tutorial of obitools](https://pythonhosted.org/OBITools/wolves.html)
 
-Only those which permit to make a pair-end sequencing and to demultiplex the sequences are presented here, in the aim to use the pipeline dada2 next.
 
 ## Preliminary steps
 

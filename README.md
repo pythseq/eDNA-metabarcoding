@@ -59,9 +59,11 @@ unzip wolf_tutorial.zip
 Activate your environment :
 ```
 conda activate obitools
+
 ```
 
 Make a pair-end sequencing. From your forward and reverse fastq files, this command will create a new fastq file, which will contain the pair-end sequences whith their quality scores. At the end of this step, the forward and the reverse reads of the same fragment of the two fastq files will be assembled. This reconstructed sequence will be the result of an alignment of the two reads.
+
 ```
 
 illuminapairedend --score-min=40 -r wolf_tutorial/wolf_R.fastq wolf_tutorial/wolf_F.fastq > wolf.fastq
@@ -85,10 +87,8 @@ obigrep -p 'mode!="joined"' wolf.fastq > wolf.ali.fastq
 
 ## Step 2 : Demultiplexing
 
-After building the amplicon sequence, each of them must be assigned to its initial PCR according to the tag added at one or both extremities of the amplified sequence. Each tag attached directly to the 5'-end of one or both primers must have the same lenght. Sequence demultiplexing detect the amplification primer associated with the tag. After that, the central metabarcode sequence will be extracted and assigned to its corresponding PCR. During this step a file will be generate, in this file each sequence is tagged with the sample name. 
+After building the amplicon sequence, each of them must be assigned to its initial PCR according to the tag added at one or both extremities of the amplified sequence. Each tag attached directly to the 5'-end of one or both primers must have the same lenght. Sequence demultiplexing detect the amplification primer associated with the tag. After that, the central metabarcode sequence will be extracted and assigned to its corresponding PCR. During this step a file will be generate. In this file each sequence is tagged with the sample name. 
 
-For the moment, the sequences in the newest dataset created are still assigned with their tag. 
-You need to remove it, in order to be able to compare the sequences next :
 ```
 ngsfilter -t wolf_tutorial/wolf_diet_ngsfilter.txt -u unidentified.fastq wolf.ali.fastq > wolf.ali.assigned.fastq
 ```
@@ -97,6 +97,30 @@ Two files, containing the sequences deprived of their tag, are created. In this 
 - unidentified.fastq contains the sequences that were not assigned with a correct tag
 - wolf.ali.assigned.fastq contains the sequences that were assigned with a correct tag, in other words, it contains only the barcode sequences
 
-(To be able to find the sample corresponding to each sequence, you can find the tag in the header of the sequence)
+Each sequence header with an attribute named "count" containing the occurence of the reads is annotated.
 
-## Step 3 : 
+## Step 3 : Dereplicate reads into uniq sequences
+
+On DNA metabarcoding, the same sequence occurs many times. With the aim to reduce the size of the dataset, all identical sequences will be group with their associated information. This process consist in a clustering operation with an identity threshold of 100%. 
+
+```
+obiuniq -m sample wolf.ali.assigned.fastq > wolf.ali.assigned.uniq.fasta
+```
+
+ The -m option alllows to dereplicate the sequence data set all in keeping the number of occurences of each unique sequence in each PCR. To keep only these two key value attributes we use obiannotate
+
+```
+ obiannotate -k count -k merged_sample \
+  wolf.ali.assigned.uniq.fasta > $$ ; mv $$ wolf.ali.assigned.uniq.fasta
+```
+
+## Step 4 : Denoising the sequence dataset
+
+All the sequences without biological interest need to be removed. That could be sequences containing PCR and/or sequencing errors, or chimeras. The first step consist in discarting rare sequences. Obistat can count the "count attribute" added previously by obiuniq and then discard rare sequences. 
+
+```
+obistat -c count wolf.ali.assigned.uniq.fasta |  \
+  sort -nk1 | head -20
+```
+
+
